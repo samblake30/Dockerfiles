@@ -1,0 +1,18 @@
+version: '3'
+services: 
+  apiweb1:
+    container_name: skynetapiweb1
+    image: samblake30/skynet-httpd1:v1
+    build: .
+    ports:
+      - "81:80"
+  apiweb2:
+    container_name: skynetapiweb2 
+    image: samblake30/skynet-httpd1:v1
+    ports:
+      - "82:80"
+  loadbalance:
+    container_name: skynetloadbalancer
+    image: samblake30/skynet-nginx
+    ports:
+      - "8083:80"
